@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\TallinnaRakenduslikKolledz",
+    "\\TallinnaRakenduslikKolledz\\Controllers"
   ],
-  "SelectedNode": "\\TallinnaRakenduslikKolledz",
+  "SelectedNode": "\\TallinnaRakenduslikKolledz\\Controllers\\StudentsController.cs",
   "PreviewInSolutionExplorer": false
 }
