@@ -1,12 +1,13 @@
 ﻿@model TallinnaRakenduslikKolledz.Models.Student
 
 @{
-	ViewData["Title"] = "Kustuta õpilane";
+	ViewData["Title"] = "Õpilaste andmed";
 
 }
-<h1>Kustuta õpilane</h1>
+
 <h3>
-	Kas oled kindel, et tahad õpilast @Model.FirstName @Model.LastName eemaldada?
+	Õpilase @Model.FirstName @Model.LastName andmed
+
 </h3>
 <div>
 	<h4>Õpilane @Model.FirstName @Model.LastName</h4>
@@ -34,35 +35,56 @@
 		<dt class="Col-sm-2">@Html.DisplayNameFor(Model => Model.EnrollmentDate)</dt>
 		<dd class="Col-sm-10">@Html.DisplayFor(Model => Model.EnrollmentDate)</dd>
 	</dl>
+	@* if on null: kuva tekst andmeid pole
+		else: kuvab andmed
+	*@
+	<dl class="row">
+
+	<dt class="Col-sm-2">@Html.DisplayNameFor(Model => Model.HomeAddress)</dt>
+	@if (Model.HomeAddress == null)
+	{
+		@("No data");
+	}
+	else
+	{
+			<dd class="Col-sm-10">@Html.DisplayFor(Model => Model.HomeAddress)</dd>
+	}
+		</dl>
+
+	
+	@if (Model.Email == null)
+	{
+
+	}
+	else
+	{
+		<dl class="row">
+
+			<dt class="Col-sm-2">@Html.DisplayNameFor(Model => Model.Email)</dt>
+			<dd class="Col-sm-10">@Html.DisplayFor(Model => Model.Email)</dd>
+		</dl>
+	}
+	@if (Model.Age == null)
+	{
+
+	}
+	else
+	{
+		<dl class="row">
+
+			<dt class="Col-sm-2">@Html.DisplayNameFor(Model => Model.Age)</dt>
+			<dd class="Col-sm-10">@Html.DisplayFor(Model => Model.Age)</dd>
+		</dl>
+
+	}
+
+	
+	
+	
+	
+	
+
+	
+
 		
-
-	@if (Model.Enrollments != null)
-	{
-		foreach(var courseEnrollment in Model.Enrollments)
-		{
-			<dl class="row">
-
-				<dd class="Col-sm-10">@(courseEnrollment)</dd>
-				
-			</dl>
-		}
-	}
-
-	@if (Model.HomeAddress != null)
-	{
-		@Model.HomeAddress
-	}
-	@if (Model.Age != null)
-	{
-		@Model.Age.ToString()
-	}
-	@if (Model.Email != null)
-	{
-		@Model.Email
-	}
-
 </div>
-<form asp-action="Delete">
-<input type="hidden" asp-for="Id"/>
-<input type="submit" value="Kustuta õpilane" class="btn btn-danger"/> | <a asp-action="Index">Tühista</a>
-</form>
