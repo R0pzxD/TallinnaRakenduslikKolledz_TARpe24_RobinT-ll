@@ -106,7 +106,7 @@
               "RelativeDocumentMoniker": "TallinnaRakenduslikKolledz\\Views\\Instructors\\Index.cshtml",
               "ToolTip": "C:\\Users\\opilane\\source\\repos\\R0pzxD\\TallinnaRakenduslikKolledz_TARpe24_RobinT-ll\\TallinnaRakenduslikKolledz\\Views\\Instructors\\Index.cshtml",
               "RelativeToolTip": "TallinnaRakenduslikKolledz\\Views\\Instructors\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAA5AAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAADIAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-09-15T11:44:56.509Z",
               "EditorCaption": ""
@@ -121,8 +121,7 @@
               "RelativeToolTip": "TallinnaRakenduslikKolledz\\Models\\InstructorIndexData.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-15T11:24:57.354Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-15T11:24:57.354Z"
             },
             {
               "$type": "Document",
@@ -134,8 +133,7 @@
               "RelativeToolTip": "TallinnaRakenduslikKolledz\\Controllers\\InstructorsController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-15T11:22:37.234Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-15T11:22:37.234Z"
             },
             {
               "$type": "Document",

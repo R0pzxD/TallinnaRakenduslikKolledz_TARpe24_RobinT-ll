@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\TallinnaRakenduslikKolledz",
+    "\\TallinnaRakenduslikKolledz\\Views",
+    "\\TallinnaRakenduslikKolledz\\Views\\Instructors"
   ],
-  "SelectedNode": "\\TallinnaRakenduslikKolledz.sln",
+  "SelectedNode": "\\TallinnaRakenduslikKolledz\\Views\\Instructors\\Index.cshtml",
   "PreviewInSolutionExplorer": false
 }
