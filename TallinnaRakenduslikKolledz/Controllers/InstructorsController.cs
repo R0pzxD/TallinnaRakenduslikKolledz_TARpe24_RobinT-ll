@@ -24,6 +24,30 @@ namespace TallinnaRakenduslikKolledz.Controllers
 
         }
         [HttpGet]
+        [HttpGet]
+        public async Task<IActionResult> Details(int? id)
+        {
+            var teacher = await _context.Instructors.FindAsync(id);
+            return View(teacher);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var teacher = await _context.Instructors.FindAsync(id);
+            return View(teacher);
+        }
+        [HttpPost, ActionName("Edit")]
+        public async Task<IActionResult> EditConfirmed([Bind("Id, LastName,FirstName,Email,HireDate,HomeAddress,Age")] Instructor teacher)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Instructors.Update(teacher);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return View(teacher);
+        }
+        [HttpGet]
         public IActionResult Create()
         {
             var instructor = new Instructor();
