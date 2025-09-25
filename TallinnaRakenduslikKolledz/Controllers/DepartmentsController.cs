@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TallinnaRakenduslikKolledz.Data;
+using TallinnaRakenduslikKolledz.Models;
 
 namespace TallinnaRakenduslikKolledz.Controllers
 {
@@ -17,5 +20,54 @@ namespace TallinnaRakenduslikKolledz.Controllers
             var schoolContext = _context.Departments.Include(d => d.Adminstrator);
             return View(await schoolContext.ToListAsync());
         }
+        [HttpGet]
+        public IActionResult Create()
+        {
+            ViewData["InstructorID"] = new SelectList(_context.Instructors, "id", "FullName");
+             return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Name,Budget,StartDate,RowVersion,InstructorID,SteamAccountName,WaterStations,EndDate")]Department department)
+        {
+            if(ModelState.IsValid)
+            {
+                _context.Add(department);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+
+            ViewData["InstructorID"] = new SelectList(_context.Instructors, "id", "FullName", department.InstructorID);
+           // ViewData["CourseStatus"] = new SelectList(_context.Instructors, "id", department.CurrentStatus.ToString(), department.StudentID);
+           return View(department);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+            var department = await _context.Departments
+                .Include(d => d.Adminstrator)
+                .FirstOrDefaultAsync(d => d.DepartmentID == id);
+            if(department == null)
+            {
+                return NotFound();
+            }
+            return View(department);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(Department department)
+        {
+            if(await _context.Departments.AnyAsync(m => m.DepartmentID == department.DepartmentID))
+            {
+                _context.Departments.Remove(department);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction("Index");
+        }
+       
     }
 }

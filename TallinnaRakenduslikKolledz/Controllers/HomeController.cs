@@ -20,7 +20,13 @@ namespace TallinnaRakenduslikKolledz.Controllers
 
         public IActionResult Privacy()
         {
+            ViewData["Värv"] = "Punane";
             return View();
+        }
+        public IActionResult Privacy2()
+        {
+            ViewData["Värv"] = "roheline";
+            return View("Privacy");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
