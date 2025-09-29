@@ -68,6 +68,12 @@ namespace TallinnaRakenduslikKolledz.Controllers
             }
             return RedirectToAction("Index");
         }
-       
+        [HttpGet]
+        public async Task<IActionResult> Details(int? id)
+        {
+            ViewData["Edit"] = new SelectList(_context.Instructors, "id", "FullName");
+            return View();
+        }
+
     }
 }
