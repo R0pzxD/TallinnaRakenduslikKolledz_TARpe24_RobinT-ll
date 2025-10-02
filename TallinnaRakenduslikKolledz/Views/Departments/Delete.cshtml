@@ -6,10 +6,10 @@
 
 <h2>@Html.DisplayFor(modelItem => Model.Name)</h2>
 <p>
-	<h3>Kustuta osakond:</h3>
+    <h3>Kustuta osakond:</h3>
 </p>
 <div>
-	<hr/>
+    <hr/>
     <dl class="row">
         <dt class="col-sm-2">@Html.DisplayNameFor(Model => Model.Name)</dt>
         <dt class="col-sm-2">@Html.DisplayFor(Model => Model.Name)</dt>
@@ -29,14 +29,23 @@
         <dt class="col-sm-2">@Html.DisplayNameFor(Model => Model.WaterStations)</dt>
         <dt class="col-sm-2">@Html.DisplayFor(Model => Model.SteamAccountName)</dt>
         <dt class="col-sm-2">@Html.DisplayNameFor(Model => Model.SteamAccountName)</dt>
-       
-       
-       
+
+
+
     </dl>
-   @* @if(ViewBag.Vaata ==)
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="DepartmentID" />
-        <input type="hidden" asp-for="RowVersion" />
-        <input type="submit" value="Kustuta" class="btn btn-danger" /> | <a asp-action="Index">Tühista</a>
-    </form> *@
+
+    @if(ViewBag.viewtype == "Delete")
+    {
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="DepartmentID" />
+            <input type="hidden" asp-for="RowVersion" />
+            <input type="submit" value="Kustuta" class="btn btn-danger" /> | <a asp-action="Index">Tühista</a>
+        </form>
+    }
+    else if(ViewBag.viewtype =="Details")
+    {
+        <a asp-action="Index">Tühista</a>
+
+    }
+
 </div>

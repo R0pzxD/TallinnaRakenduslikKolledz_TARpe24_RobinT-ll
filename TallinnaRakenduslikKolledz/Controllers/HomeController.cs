@@ -20,12 +20,12 @@ namespace TallinnaRakenduslikKolledz.Controllers
 
         public IActionResult Privacy()
         {
-            ViewData["Värv"] = "Punane";
+            ViewData["Värv"] = "Details";
             return View();
         }
         public IActionResult Privacy2()
         {
-            ViewData["Värv"] = "roheline";
+            ViewData["Värv"] = "Delete";
             return View("Privacy");
         }
 

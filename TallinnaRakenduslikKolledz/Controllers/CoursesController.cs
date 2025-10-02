@@ -43,7 +43,7 @@ namespace TallinnaRakenduslikKolledz.Controllers
             await _context.SaveChangesAsync();
             PopulateDepartmentsDropDownList(course.DepartmentID);
             }
-            return RedirectToAction();
+            return RedirectToAction("Index");
         }
 
         public async Task<IActionResult>Delete(int?id)
