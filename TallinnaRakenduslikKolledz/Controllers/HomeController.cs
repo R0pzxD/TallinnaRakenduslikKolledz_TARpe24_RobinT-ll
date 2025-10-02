@@ -22,12 +22,28 @@ namespace TallinnaRakenduslikKolledz.Controllers
         {
             ViewData["Värv"] = "Details";
             return View();
+
+            
         }
         public IActionResult Privacy2()
         {
             ViewData["Värv"] = "Delete";
             return View("Privacy");
         }
+        public IActionResult Privacy3()
+        {
+            ViewData["Värv2"] = "Edit";
+            return View();
+
+            
+        }public IActionResult Privacy4()
+        {
+            ViewData["Värv2"] = "Create";
+            return View();
+
+            
+        }
+        
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

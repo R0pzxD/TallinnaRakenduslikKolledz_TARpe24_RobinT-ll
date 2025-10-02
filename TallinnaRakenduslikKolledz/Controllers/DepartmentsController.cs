@@ -23,6 +23,7 @@ namespace TallinnaRakenduslikKolledz.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            ViewData["viewtype"] = "Create";
             ViewData["InstructorID"] = new SelectList(_context.Instructors, "Id", "FullName");
              return View();
         }
@@ -32,7 +33,7 @@ namespace TallinnaRakenduslikKolledz.Controllers
         {
             if(ModelState.IsValid)
             {
-                _context.Add(department);
+                _context.Departments.Add(department);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -73,12 +74,46 @@ namespace TallinnaRakenduslikKolledz.Controllers
         public async Task<IActionResult> Details(int? id)
         {
             ViewData["viewtype"] = "Details";
-            ViewData["Edit"] = new SelectList(_context.Instructors, "id", "FullName");
+            ViewData["Edit"] = new SelectList(_context.Departments, "id", "FullName");
             var department = await _context.Departments
                             .Include(d => d.Adminstrator)
                             .FirstOrDefaultAsync(d => d.DepartmentID == id);
             return View("Delete", department);
         }
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            ViewData["viewtype"] = "Edit";
+            var department = await _context.Departments.FindAsync(id);
+            return View("Create", department);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit([Bind("DepartmentID,Name,Budget,StartDate,RowVersion,InstructorID,SteamAccountName,WaterStations,EndDate")]Department department)
+        {
+            if(ModelState.IsValid)
+            {
+                _context.Departments.Update(department);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+
+            ViewData["InstructorID"] = new SelectList(_context.Instructors, "id", "FullName", department.InstructorID);
+           // ViewData["CourseStatus"] = new SelectList(_context.Instructors, "id", department.CurrentStatus.ToString(), department.StudentID);
+           return View("Create",department);
+        }
+        //[HttpPost, ActionName("Edit")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> EditConfirmed([Bind("DepartmentID,Name,InstructorID,Budget,StartDate,Adminstrator,EndDate,WaterStations,SteamAccountName,RowVersion")] Department department)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _context.Departments.Update(department);
+        //        await _context.SaveChangesAsync();
+        //        return RedirectToAction("Index");
+        //    }
+        //    return View(department);
+        //}
 
     }
 }
