@@ -48,6 +48,7 @@ namespace TallinnaRakenduslikKolledz.Controllers
 
         public async Task<IActionResult>Delete(int?id)
         {
+            ViewBag.viewtype = "Delete";
             if(id==null || _context.Courses == null)
             {
                 return NotFound();
@@ -66,6 +67,7 @@ namespace TallinnaRakenduslikKolledz.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            
             if(_context.Courses == null)
             {
                 return NotFound();
@@ -109,6 +111,15 @@ namespace TallinnaRakenduslikKolledz.Controllers
            
             return View("Create", course);
         }
-
+        [HttpGet]
+        public async Task<IActionResult> Details(int? id)
+        {
+            ViewData["viewtype"] = "Details";
+            var courses = await _context.Courses
+                .Include(c => c.Department)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(mbox => mbox.CourseId == id);
+            return View("Delete", courses);
+        }
     }
 }
