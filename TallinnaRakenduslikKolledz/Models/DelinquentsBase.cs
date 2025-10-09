@@ -2,9 +2,10 @@
 {
     public class DelinquentsBase
     {
-      public string FirstName { get; set; }
+      public int DelinquentsID { get; set; }
+        public string FirstName { get; set; }
       public string LastName { get; set; }
-      public enum Violaton
+      public enum Violation
       {
          Smoking,Gooning,Sleeping,Drugs,Alcohol
       }
